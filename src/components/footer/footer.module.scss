@@ -1,6 +1,10 @@
 footer {
+  margin-top: 20px;
   width: 100vw;
   padding: 0 30px 0 30px;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
   .footerTop {
     display: flex;
     justify-content: space-between;
@@ -12,5 +16,8 @@ footer {
     list-style: none;
     justify-content: space-between;
     text-decoration: underline;
+  }
+  .socials > * {
+    font-size: xx-large;
   }
 }
