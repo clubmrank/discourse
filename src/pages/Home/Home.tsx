@@ -8,7 +8,6 @@ import { AiOutlineDown } from "react-icons/ai";
 import { FaUniversity } from "react-icons/fa";
 import { GiBookCover } from "react-icons/gi";
 import { GoFileSubmodule } from "react-icons/go";
-import BarChart from "../../components/BarChart/BarChart";
 const Home = () => {
   const universities = (
     <Menu
