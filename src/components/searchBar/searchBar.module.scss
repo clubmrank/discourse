@@ -1,0 +1,29 @@
+@import "../../assets/css/colors";
+@import "../../assets/css/font";
+
+.searchBarMain {
+  display: flex;
+  align-items: center;
+
+  width: 60%;
+  form {
+    border: 1px solid $light-grey;
+    width: 100%;
+    border-radius: 20px;
+    display: flex;
+    padding: 0 2px 0 10px;
+  }
+  input {
+    border: none;
+    width: 90%;
+    background-color: transparent;
+    text-align: left;
+  }
+  button {
+    background-color: $primary-color;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+  }
+}

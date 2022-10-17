@@ -1,0 +1,32 @@
+@import "../../assets/css/colors";
+@import "../../assets/css/font";
+.headerMain {
+  width: 100vw;
+  //   padding: 0 100px 0 20px;
+  font-family: $primary-font;
+
+  .headerCont {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 60px;
+
+    .navLinks {
+      display: flex;
+      flex: 0.4;
+      justify-content: space-between;
+      list-style: none;
+      font-family: $raleway-font;
+      a {
+        color: $light-grey !important;
+        text-align: center;
+      }
+    }
+    .navSearch {
+      display: flex;
+      flex: 0.3;
+      justify-content: space-between;
+    }
+  }
+}
