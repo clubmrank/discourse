@@ -1,0 +1,53 @@
+@import "../../assets/css/colors";
+@import "../../assets/css/font";
+.homeBody {
+  // background-image: url("/images/graduation.jpg");
+  height: 80vh;
+  width: 100vw;
+  background: url("/images/graduation.jpg");
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  justify-content: center;
+  text-align: center;
+  padding-top: 30px;
+  h1 {
+    color: #fff;
+    font-weight: 900;
+    font-size: 64px;
+  }
+  p {
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  .dropdowns {
+    border-radius: 20px;
+    width: 50%;
+    margin: auto;
+    display: flex;
+    background-color: #fff;
+    margin-top: 70px;
+    display: flex;
+    // height: 40px;
+    align-items: center;
+    .overlay {
+      display: none;
+    }
+    .dropdown {
+      background-color: transparent;
+      flex: 0.3;
+    }
+
+    .dropdownBtn {
+      background-color: $primary-color;
+      border-radius: 20px;
+      border: none;
+      width: 120px;
+      margin-left: 10px;
+    }
+  }
+}
