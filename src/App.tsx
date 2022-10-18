@@ -5,19 +5,20 @@ import Header from "./components/header/Header";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import ModuleRating from "./pages/ModuleRating/ModuleRating";
-import Modules from "./pages/Modules/Modules";
+
 import UniversityReview from "./pages/UniversityReviews/UniversityReview";
 import Account from "./pages/Account/Account";
 import GetInspired from "./pages/GetInspired/GetInspired";
 import AboutUs from "./pages/AboutUs/AboutUs";
 import UniversityList from "./pages/UniversityList/UniversityList";
+import Module from "./pages/Modules/Module";
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/home" element={<Home />} />
         <Route path="/modulesrating" element={<ModuleRating />} />
-        <Route path="/modules" element={<Modules />} />
+        <Route path="/module" element={<Module />} />
         <Route path="/universities" element={<UniversityList />}>
           <Route path=":name" element={<UniversityReview />} />
         </Route>
