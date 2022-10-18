@@ -68,7 +68,7 @@ const UniversityList = () => {
                   <div className={styles.uniDropdown}></div>
                   <Dropdown
                     overlay={universities}
-                    placement="right"
+                    // placement="right"
                     overlayStyle={{ backgroundColor: "red", width: "200px" }}
                   >
                     <Card
