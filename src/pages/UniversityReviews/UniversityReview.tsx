@@ -3,6 +3,7 @@ import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
 import styles from "./universities.module.scss";
 import { AiOutlineEdit } from "react-icons/ai";
+
 const UniversityReview = () => {
   return (
     <div className={styles.uniMain}>
