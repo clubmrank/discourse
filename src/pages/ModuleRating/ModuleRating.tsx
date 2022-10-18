@@ -6,6 +6,7 @@ const ModuleRating = () => {
   return (
     <div>
       <Header />
+
       <Footer />
     </div>
   );
