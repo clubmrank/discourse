@@ -8,25 +8,15 @@ import { AiOutlineDown } from "react-icons/ai";
 import { FaUniversity } from "react-icons/fa";
 import { GiBookCover } from "react-icons/gi";
 import { GoFileSubmodule } from "react-icons/go";
+import { Select } from "antd";
+
+const { Option } = Select;
 const Home = () => {
-  const universities = (
-    <Menu
-      items={[
-        {
-          key: "1",
-          label: <a>1st menu item</a>,
-        },
-        {
-          key: "2",
-          label: <a>2nd menu item</a>,
-        },
-        {
-          key: "3",
-          label: <a>3rd menu item</a>,
-        },
-      ]}
-    />
-  );
+  const universities = [
+    "University of The Western Cape",
+    "University of Cape Town",
+    "Stellenbosch University",
+  ];
 
   return (
     <div className={styles.homeMain}>
@@ -41,40 +31,64 @@ const Home = () => {
 
         <div className={styles.dropdowns}>
           <div className={styles.dropdown}>
-            <Dropdown
-              overlay={universities}
-              overlayStyle={{ backgroundColor: "red", width: "200px" }}
-            >
-              <Button>
-                <Space align="center" size="large">
+            <Select
+              // defaultValue="lucy"
+              // style={{ width: 120 }}
+
+              placeholder={
+                <Space>
                   <FaUniversity />
                   Select Your University
-                  <AiOutlineDown />
                 </Space>
-              </Button>
-            </Dropdown>
+              }
+            >
+              {universities.map((uni) => (
+                <Option value={uni}>{uni}</Option>
+              ))}
+            </Select>
           </div>
           <div className={styles.dropdown}>
-            <Dropdown overlay={universities}>
-              <Button>
+            <Select
+              // defaultValue="lucy"
+              // style={{ width: 120 }}
+
+              placeholder={
                 <Space>
-                  <GiBookCover />
+                  <GoFileSubmodule />
                   Select Your Course
-                  <AiOutlineDown />
                 </Space>
-              </Button>
-            </Dropdown>
+              }
+            >
+              <Option value="jack">Jack</Option>
+              <Option value="lucy">Lucy</Option>
+              <Option value="disabled" disabled>
+                Disabled
+              </Option>
+              <Option value="Yiminghe">yiminghe</Option>
+            </Select>
           </div>
           <div className={styles.dropdown}>
-            <Dropdown overlay={universities}>
-              <Button>
+            <Select
+              // style={{ width: 120 }}
+
+              placeholder={
                 <Space>
                   <GiBookCover />
                   Select Your Module
-                  <AiOutlineDown />
                 </Space>
-              </Button>
-            </Dropdown>
+              }
+            >
+              <Option value="University Of The western Cape">
+                University Of The western Cape
+              </Option>
+              <Option value="University of Cape Town">
+                University of Cape Town
+              </Option>
+
+              <Option value="Stellenbosch University">
+                Stellenbosch University
+              </Option>
+            </Select>
           </div>
           <button className={styles.dropdownBtn}>Search</button>
         </div>
