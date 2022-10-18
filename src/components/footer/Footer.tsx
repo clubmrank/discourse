@@ -19,7 +19,7 @@ const Footer = () => {
           <AiFillLinkedin />
         </div>
       </div>
-
+      <hr />
       <ul>
         <li>2022, All right reserved</li>
         <li>

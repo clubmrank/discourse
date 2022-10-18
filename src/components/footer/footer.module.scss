@@ -1,3 +1,5 @@
+@import "../../assets/css/colors";
+@import "../../assets/css/font";
 footer {
   margin-top: 20px;
   width: 100vw;
@@ -16,6 +18,9 @@ footer {
     list-style: none;
     justify-content: space-between;
     text-decoration: underline;
+    a {
+      color: $light-grey;
+    }
   }
   .socials > * {
     font-size: xx-large;

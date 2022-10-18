@@ -1,0 +1,49 @@
+@import "../../assets/css/colors";
+@import "../../assets/css/font";
+.uniMain {
+  height: 80vh;
+  .uniCont {
+    background: url("/images/chairs.jpg");
+    height: 100%;
+    background-position: center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    padding-top: 30px;
+    .uniTop {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+
+      h1 {
+        color: #fff;
+      }
+
+      .topRight {
+        background-color: #fff;
+        display: none;
+        text-decoration: underline;
+
+        height: 25px;
+        width: 150px;
+        border-radius: 20px;
+
+        .uniReviewsIcon {
+          background-color: $primary-color;
+          border-radius: 50%;
+          font-size: x-large;
+          margin: 0px 3px 0 3px;
+          display: flex;
+          justify-content: center;
+        }
+      }
+    }
+    .uniReviews {
+      ul {
+        display: flex;
+        justify-content: space-evenly;
+        .uniDropdown {
+        }
+      }
+    }
+  }
+}
