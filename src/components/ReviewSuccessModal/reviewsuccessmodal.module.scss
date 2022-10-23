@@ -1,0 +1,20 @@
+.modal {
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 300px;
+    width: 600px;
+    z-index: 2;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.modal > img {
+    filter: invert(40%) sepia(95%) saturate(525%) hue-rotate(73deg) brightness(89%) contrast(88%);
+    width: 100px;
+}
