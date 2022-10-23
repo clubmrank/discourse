@@ -12,12 +12,16 @@ import GetInspired from "./pages/GetInspired/GetInspired";
 import AboutUs from "./pages/AboutUs/AboutUs";
 import UniversityList from "./pages/UniversityList/UniversityList";
 import Module from "./pages/Modules/Module";
+import WriteReview from "./pages/writeReview/WriteReview";
+import CoursePage from "./pages/CoursePage/CoursePage";
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/modulesrating" element={<ModuleRating />} />
+        <Route path="/course" element={<CoursePage />} />
+        <Route path="/writereview" element={<WriteReview />} />
         <Route path="/module" element={<Module />} />
         <Route path="/universities" element={<UniversityList />}>
           <Route path=":name" element={<UniversityReview />} />
