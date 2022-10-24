@@ -1,7 +1,6 @@
 @import "../../assets/css/colors";
 @import "../../assets/css/font";
 .homeBody {
-  // background-image: url("/images/graduation.jpg");
   height: 100vh;
   width: 100vw;
   background: url("/images/graduation.jpg");
@@ -15,14 +14,24 @@
   text-align: center;
   padding-top: 30px;
   h1 {
-    color: #fff;
+    font-style: normal;
+    font-family: "Roboto";
     font-weight: 900;
-    font-size: 64px;
+    font-size: 77px;
+    line-height: 90px;
+    color: #ffffff;
   }
   p {
     color: #fff;
     font-weight: 700;
     font-size: 14px;
+  }
+  h2 {
+    color: #ffffff;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 160%;
   }
 
   .dropdowns {
@@ -33,7 +42,7 @@
     background-color: #fff;
     margin-top: 70px;
     display: flex;
-    // height: 40px;
+
     align-items: center;
     .overlay {
       display: none;

@@ -36,7 +36,7 @@ const UniversityList = () => {
       ) : (
         <div className={styles.uniCont}>
           <div className={styles.uniTop}>
-            <h1>Choose Your university</h1>
+            <h1>Choose Your University</h1>
             <div className={styles.topRight}></div>
           </div>
           <div className={styles.uniReviews}>
@@ -47,6 +47,28 @@ const UniversityList = () => {
                   <Dropdown
                     overlay={universities}
                     // placement={`right`}
+                    overlayStyle={{ backgroundColor: "red", width: "200px" }}
+                  >
+                    <Card
+                      hoverable={true}
+                      title="University Of The Western Cape"
+                      style={{
+                        width: 200,
+                        position: "relative",
+                      }}
+                      cover={
+                        <img alt="example" src="/images/UWC_logo.svg.png" />
+                      }
+                    />
+                  </Dropdown>
+                </Link>
+              </li>
+              <li>
+                <Link to="/university_of_the_western_cape">
+                  <div className={styles.uniDropdown}></div>
+                  <Dropdown
+                    overlay={universities}
+                    // placement="right"
                     overlayStyle={{ backgroundColor: "red", width: "200px" }}
                   >
                     <Card

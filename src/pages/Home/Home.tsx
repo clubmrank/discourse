@@ -48,15 +48,16 @@ const Home = () => {
       <Header />
       <div className={styles.homeBody}>
         <h1>WELCOME TO DISCOURSE</h1>
-        <p>
+        <h2>
           A students guide to navigating their academic choices, from
           <br /> the perspective of students who have done or experienced <br />{" "}
           them before.
-        </p>
+        </h2>
 
         <div className={styles.dropdowns}>
           <div className={styles.dropdown}>
             <Select
+              style={{ width: 205, borderRadius: "20px" }}
               onChange={(e) =>
                 setSearcher((prev) => ({ ...prev, university: e }))
               }
@@ -77,6 +78,7 @@ const Home = () => {
           <div className={styles.dropdown}>
             <Select
               size="large"
+              style={{ width: 205 }}
               showSearch={true}
               onChange={(e) => setSearcher((prev) => ({ ...prev, course: e }))}
               placeholder={
@@ -97,6 +99,7 @@ const Home = () => {
             <Select
               size="large"
               showSearch={true}
+              style={{ width: 205 }}
               onChange={(e) => setSearcher((prev) => ({ ...prev, module: e }))}
               placeholder={
                 <Space>
