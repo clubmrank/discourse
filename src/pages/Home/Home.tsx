@@ -33,7 +33,11 @@ const Home = () => {
     "Bsc Pharmacy",
   ];
   const handleSearch = (e: { preventDefault: () => void }) => {
-    navigate(`/universities/${searcher.university}/${searcher.course}`);
+    navigate(
+      `/universities/${searcher.university}/${searcher.course}/${
+        searcher.module === "" ? "" : searcher.module
+      }`
+    );
   };
   const handleSubmitBtn = () => {
     searcher.university !== "" && searcher.course !== ""
