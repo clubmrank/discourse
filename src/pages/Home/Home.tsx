@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../../components/header/Header";
 import styles from "./home.module.scss";
 import Footer from "../../components/footer/Footer";
@@ -9,15 +9,40 @@ import { FaUniversity } from "react-icons/fa";
 import { GiBookCover } from "react-icons/gi";
 import { GoFileSubmodule } from "react-icons/go";
 import { Select } from "antd";
-
+import { useNavigate } from "react-router-dom";
 const { Option } = Select;
+
 const Home = () => {
+  const [searcher, setSearcher] = useState({
+    university: "",
+    course: "",
+    module: "",
+  });
+  const navigate = useNavigate();
+  const [submitDisable, setSubmitDisable] = useState(false);
   const universities = [
     "University of The Western Cape",
     "University of Cape Town",
     "Stellenbosch University",
   ];
 
+  const modules = ["Cos101", "Mat105", "cos114"];
+  const courses = [
+    "Bsc Computer Sciences",
+    "Bsc Mathematical Sciences",
+    "Bsc Pharmacy",
+  ];
+  const handleSearch = (e: { preventDefault: () => void }) => {
+    navigate(`/universities/${searcher.university}/${searcher.course}`);
+  };
+  const handleSubmitBtn = () => {
+    searcher.university !== "" && searcher.course !== ""
+      ? setSubmitDisable(false)
+      : setSubmitDisable(true);
+  };
+  useEffect(() => {
+    handleSubmitBtn();
+  }, [searcher]);
   return (
     <div className={styles.homeMain}>
       <Header />
@@ -32,9 +57,11 @@ const Home = () => {
         <div className={styles.dropdowns}>
           <div className={styles.dropdown}>
             <Select
-              // defaultValue="lucy"
-              // style={{ width: 120 }}
-
+              onChange={(e) =>
+                setSearcher((prev) => ({ ...prev, university: e }))
+              }
+              size="large"
+              showSearch={true}
               placeholder={
                 <Space>
                   <FaUniversity />
@@ -49,9 +76,9 @@ const Home = () => {
           </div>
           <div className={styles.dropdown}>
             <Select
-              // defaultValue="lucy"
-              // style={{ width: 120 }}
-
+              size="large"
+              showSearch={true}
+              onChange={(e) => setSearcher((prev) => ({ ...prev, course: e }))}
               placeholder={
                 <Space>
                   <GoFileSubmodule />
@@ -59,18 +86,18 @@ const Home = () => {
                 </Space>
               }
             >
-              <Option value="jack">Jack</Option>
-              <Option value="lucy">Lucy</Option>
-              <Option value="disabled" disabled>
-                Disabled
-              </Option>
-              <Option value="Yiminghe">yiminghe</Option>
+              {courses.map((el) => (
+                <Option value={el} key={el}>
+                  {el}
+                </Option>
+              ))}
             </Select>
           </div>
           <div className={styles.dropdown}>
             <Select
-              // style={{ width: 120 }}
-
+              size="large"
+              showSearch={true}
+              onChange={(e) => setSearcher((prev) => ({ ...prev, module: e }))}
               placeholder={
                 <Space>
                   <GiBookCover />
@@ -78,19 +105,19 @@ const Home = () => {
                 </Space>
               }
             >
-              <Option value="University Of The western Cape">
-                University Of The western Cape
-              </Option>
-              <Option value="University of Cape Town">
-                University of Cape Town
-              </Option>
-
-              <Option value="Stellenbosch University">
-                Stellenbosch University
-              </Option>
+              {modules.map((el) => (
+                <Option value={el}>{el}</Option>
+              ))}
             </Select>
           </div>
-          <button className={styles.dropdownBtn}>Search</button>
+          <Button
+            className={styles.dropdownBtn}
+            onClick={handleSearch}
+            htmlType="submit"
+            disabled={submitDisable}
+          >
+            Search
+          </Button>
         </div>
       </div>
       <Footer />

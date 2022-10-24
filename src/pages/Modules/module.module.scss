@@ -4,11 +4,13 @@
   .moduleCont {
     .topDiv {
       background-image: url("/images/chairs.jpg");
+      position: relative;
+      margin-top: 60px;
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
       padding: 50px 50px 0px 50px;
-      height: 45vh;
+      height: 50vh;
       .uniTop {
         display: flex;
         justify-content: space-between;

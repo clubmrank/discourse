@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./writeReviewsButton.module.scss";
 import { AiOutlineEdit } from "react-icons/ai";
-
+import { Link } from "react-router-dom";
 const WriteReviewButton = () => {
   return (
     <div className={styles.reviewBtn}>

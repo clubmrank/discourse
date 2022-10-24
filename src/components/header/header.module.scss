@@ -4,7 +4,10 @@
   width: 100vw;
   //   padding: 0 100px 0 20px;
   font-family: $primary-font;
-
+  position: fixed;
+  background-color: #fff;
+  z-index: 1;
+  top: 0px;
   .headerCont {
     width: 100%;
     display: flex;

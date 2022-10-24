@@ -1,3 +1,5 @@
+@import "../../assets/css/colors";
+@import "../../assets/css/font";
 .card {
   width: 50%;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
@@ -13,12 +15,14 @@
   border-top-right-radius: 25px;
 }
 
-.card__left > h2 {
+.card__left > p {
   color: #fff;
+  margin: 0px;
 }
 
 .card__left > h1 {
   color: #fff;
+  margin: 0px;
 }
 
 .card__right > h4 {
@@ -53,4 +57,17 @@
   border-bottom: 1px solid black;
   width: fit-content;
   cursor: pointer;
+  margin-bottom: 0px;
+}
+.card_bottom_below {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 20px;
+  .tag {
+    background-color: $primary-color;
+    border-radius: 20px;
+    width: 100px;
+    text-align: center;
+    cursor: pointer;
+  }
 }

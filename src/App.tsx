@@ -19,13 +19,24 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/modulesrating" element={<ModuleRating />} />
-        <Route path="/course" element={<CoursePage />} />
-        <Route path="/writereview" element={<WriteReview />} />
-        <Route path="/module" element={<Module />} />
         <Route path="/universities" element={<UniversityList />}>
           <Route path=":name" element={<UniversityReview />} />
         </Route>
+        <Route
+          path="/universities/:university/:course"
+          element={<CoursePage />}
+        />
+        <Route
+          path="/universities/:university/:course/:module"
+          element={<Module />}
+        />
+        <Route
+          path="/universities/:university/:course/:module/write_review"
+          element={<WriteReview />}
+        />
+
         <Route path="/account" element={<Account />} />
         <Route path="/about us" element={<AboutUs />} />
         <Route path="/get inspired" element={<GetInspired />} />

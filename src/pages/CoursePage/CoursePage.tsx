@@ -4,6 +4,7 @@ import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
 import { ModuleCard, IProps } from "../../components/ModuleCard/ModuleCard";
 import styles from "./coursePage.module.scss";
+import { useLocation, useParams } from "react-router-dom";
 const dummyModuleData: IProps = {
   courseName: "Computer Science 101",
   rating: 4.5,
@@ -13,12 +14,15 @@ const dummyModuleData: IProps = {
   universityName: "University Of The Western Cape",
 };
 const CoursePage = () => {
+  const location = useLocation();
+  const params = useParams();
+  console.log("params", params);
   return (
     <div className={styles.coursePageMain}>
       <Header />
       <div className={styles.coursePageCont}>
         <div className={styles.coursePageTop}>
-          <h1>Bsc Mathematics Modules</h1>
+          <h1>{params.course} Modules</h1>
           <div>
             <WriteReviewButton />
           </div>
