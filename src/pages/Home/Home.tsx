@@ -18,20 +18,44 @@ const Home = () => {
     course: "",
     module: "",
   });
+
+  const [courses, setCourses] = useState([]);
+  const [modules, setModules] = useState([]);
+  const [universities, setUniversities] = useState([]);
+
+  const getCourseByInsti = () => {};
+
+  const getModules = async () => {
+    await fetch(`https://discoursemrank.azurewebsites.net/get_all_modules`, {
+      method: "GET",
+    })
+      .then((res) => res.json())
+      .then((data) => setModules(data))
+      .catch((err) => console.log(err));
+  };
+  const getCourses = async (id: number) => {
+    await fetch(
+      `https://discoursemrank.azurewebsites.net/get_all_courses_by_institution/${id}`,
+      {
+        method: "GET",
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => setCourses(data))
+      .catch((err) => console.log(err));
+  };
+  const getUniversities = async () => {
+    await fetch(`https://discoursemrank.azurewebsites.net/get_institutions`, {
+      method: "GET",
+    })
+      .then((res) => res.json())
+      .then((data) => setUniversities(data))
+      .catch((err) => console.log(err));
+  };
+
   const navigate = useNavigate();
   const [submitDisable, setSubmitDisable] = useState(false);
-  const universities = [
-    "University of The Western Cape",
-    "University of Cape Town",
-    "Stellenbosch University",
-  ];
 
-  const modules = ["Cos101", "Mat105", "cos114"];
-  const courses = [
-    "Bsc Computer Sciences",
-    "Bsc Mathematical Sciences",
-    "Bsc Pharmacy",
-  ];
   const handleSearch = (e: { preventDefault: () => void }) => {
     navigate(
       `/universities/${searcher.university}/${searcher.course}/${
@@ -46,6 +70,9 @@ const Home = () => {
   };
   useEffect(() => {
     handleSubmitBtn();
+    getCourses(1);
+    getModules();
+    getUniversities();
   }, [searcher]);
   return (
     <div className={styles.homeMain}>
@@ -74,8 +101,8 @@ const Home = () => {
                 </Space>
               }
             >
-              {universities.map((uni) => (
-                <Option value={uni}>{uni}</Option>
+              {universities.map((uni: any) => (
+                <Option value={uni.name}>{uni.name}</Option>
               ))}
             </Select>
           </div>
@@ -92,9 +119,9 @@ const Home = () => {
                 </Space>
               }
             >
-              {courses.map((el) => (
-                <Option value={el} key={el}>
-                  {el}
+              {courses.map((el: any) => (
+                <Option value={el.name} key={el.name}>
+                  {el.name}
                 </Option>
               ))}
             </Select>
@@ -112,8 +139,8 @@ const Home = () => {
                 </Space>
               }
             >
-              {modules.map((el) => (
-                <Option value={el}>{el}</Option>
+              {modules.map((el: any) => (
+                <Option value={el.code}>{el.name}</Option>
               ))}
             </Select>
           </div>

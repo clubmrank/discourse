@@ -9,6 +9,17 @@ export interface IProps {
   date: string;
 }
 const ReviewCard = ({ rating, reviewText, date, author }: IProps) => {
+  const postLike = () => {
+    fetch("https://discoursemrank.azurewebsites.net/get_all_institutions", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ title: "React POST Request Example" }),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+      .catch((err) => console.log(err));
+  };
+  const postDisLike = () => {};
   return (
     <div className={styles.card}>
       <div className={styles.card__top}>

@@ -1,20 +1,58 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./newreviewmodal.module.scss";
 import { Rate } from "antd";
 import { TagsModal } from "../TagsModal/TagsModal";
+import { useParams } from "react-router-dom";
 export const NewReviewModal = () => {
   const [rating, setRating] = React.useState(1);
   const [review, setReview] = React.useState("");
   const [isTagsModalOpen, setIsTagsModalOpen] = React.useState(false);
   const [tags, setTags] = React.useState<any>([]);
   const [isAnonymous, setIsAnonymous] = React.useState(false);
+  const [module, setModule]: any = useState({});
+  const params: any = useParams();
 
   const close = (tags?: string[]) => {
     setIsTagsModalOpen(false);
     setTags(tags);
     console.log("here", tags);
   };
+  const getModule = (code: string) => {
+    fetch(`https://discoursemrank.azurewebsites.net/get_module_by_id/${code}`, {
+      method: "GET",
+    })
+      .then((res) => res.json())
+      .then((data) => setModule(data))
+      .catch((err) => console.log(err));
+  };
 
+  const postReview = () => {
+    const item = {
+      reviewer: isAnonymous || 9876543,
+      body: review,
+      module: params.module,
+      tags: tags,
+    };
+
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(item),
+    };
+    fetch(
+      "https://discoursemrank.azurewebsites.net/post_review",
+      requestOptions
+    )
+      .then((response) => response.json())
+      .catch((err) => console.log(err));
+  };
+
+  const handleSubmit = (e: { preventDefault: () => void }) => {
+    postReview();
+  };
+  useEffect(() => {
+    getModule(params.module);
+  });
   return (
     <div style={{ width: 400, borderRadius: "20px" }}>
       {isTagsModalOpen ? null : (
@@ -23,7 +61,7 @@ export const NewReviewModal = () => {
             <p>
               <i className={[styles.arrow, styles.left].join(" ")}></i>
             </p>
-            <h2>Writing a review for CSC 101</h2>
+            <h2>{module.name}</h2>
             <p></p>
           </div>
           <div className={styles.modal__mid}>
@@ -34,12 +72,13 @@ export const NewReviewModal = () => {
               className={styles.textarea}
               cols={30}
               rows={7}
+              required
             ></textarea>
             <div className={styles.ratingcontainer}>
               <Rate
                 allowHalf={true}
                 value={rating}
-                onChange={(e) => {
+                onChange={(e: any) => {
                   setRating(e);
                 }}
               />
@@ -64,7 +103,9 @@ export const NewReviewModal = () => {
               </div>
             </div>
             <div className={styles.bottom__bottom}>
-              <button>Submit Review</button>
+              <button type="submit" onClick={handleSubmit}>
+                Submit Review
+              </button>
             </div>
           </div>
         </div>

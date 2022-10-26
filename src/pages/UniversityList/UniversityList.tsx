@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./universityList.module.scss";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
@@ -9,6 +9,15 @@ import { Link, Outlet, useOutlet } from "react-router-dom";
 const { Meta } = Card;
 const UniversityList = () => {
   const outlet = useOutlet();
+
+  // useEffect(() => {
+  //   fetch("https://discoursemrank.azurewebsites.net/get_institutions", {
+  //     method: "GET",
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => setUniversities(data))
+  //     .catch((err) => console.log(err));
+  // });
   const universities = (
     <Menu
       items={[

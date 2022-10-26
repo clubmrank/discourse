@@ -1,6 +1,7 @@
 import styles from "./tagsmodal.module.scss";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Rate } from "antd";
+import { GiPrettyFangs } from "react-icons/gi";
 
 interface IProps {
   close: (tags?: string[]) => void;
@@ -11,7 +12,7 @@ export const TagsModal = ({ close }: IProps) => {
   const [review, setReview] = React.useState("");
   const [isTagsModalOpen, setIsTagsModalOpen] = React.useState(false);
   const [tags, setTags] = React.useState<string[]>([]);
-
+  const [loadTags, setLoadTags] = useState([]);
   const AddOrRemoveTag = (tag: string) => {
     let tagsCopy: string[] = [...tags];
 
@@ -29,7 +30,18 @@ export const TagsModal = ({ close }: IProps) => {
     console.log(tags);
     close(tags);
   };
+  const getTags = () => {
+    fetch(`https://discoursemrank.azurewebsites.net/get_all_tags`, {
+      method: "GET",
+    })
+      .then((res) => res.json())
+      .then((data) => setLoadTags(data))
+      .catch((err) => console.log(err));
+  };
 
+  useEffect(() => {
+    getTags();
+  });
   return (
     <div style={{ width: 600 }}>
       <div className={styles.modal}>
@@ -42,48 +54,11 @@ export const TagsModal = ({ close }: IProps) => {
         </div>
         <div className={styles.modal__mid}>
           <div className={styles.tagrow}>
-            <div onClick={() => AddOrRemoveTag("GROUP WORK")}>
-              <p>GROUP WORK</p>
-            </div>
-            <div onClick={() => AddOrRemoveTag("TEST HEAVY")}>
-              <p>TEST HEAVY</p>
-            </div>
-            <div onClick={() => AddOrRemoveTag("PARTICIPATION MATTERS")}>
-              <p>PARTICIPATION MATTERS</p>
-            </div>
-          </div>
-          <div className={styles.tagrow}>
-            <div onClick={() => AddOrRemoveTag("GOOD FEEDBACK")}>
-              <p>GOOD FEEDBACK</p>
-            </div>
-            <div onClick={() => AddOrRemoveTag("LOTS OF SELF STUDY")}>
-              <p>LOTS OF SELF STUDY</p>
-            </div>
-            <div onClick={() => AddOrRemoveTag("TAKE NOTES")}>
-              <p>TAKE NOTES</p>
-            </div>
-          </div>
-          <div className={styles.tagrow}>
-            <div onClick={() => AddOrRemoveTag("LECTURE HEAVY")}>
-              <p>LECTURE HEAVY</p>
-            </div>
-            <div onClick={() => AddOrRemoveTag("GROUP PROJECTS")}>
-              <p>GROUP PROJECTS</p>
-            </div>
-            <div onClick={() => AddOrRemoveTag("POP QUIZZES")}>
-              <p>POP QUIZZES</p>
-            </div>
-          </div>
-          <div className={styles.tagrow}>
-            <div onClick={() => AddOrRemoveTag("GET READY TO READ")}>
-              <p>GET READY TO READ</p>
-            </div>
-            <div
-              className={styles.lastdiv}
-              onClick={() => AddOrRemoveTag("INTERACTIVE ASSIGNMENTS")}
-            >
-              <p>INTERACTIVE ASSIGNMENTS</p>
-            </div>
+            {loadTags.map((tg: any) => (
+              <div onClick={() => AddOrRemoveTag(`${tg.id}`)}>
+                <p>{tg.name}</p>
+              </div>
+            ))}
           </div>
         </div>
         <div className={styles.modal__bottom}>
