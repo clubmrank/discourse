@@ -7,6 +7,7 @@ import { AiOutlineEdit } from "react-icons/ai";
 import ModuleTabs from "../../components/ModuleRatingTabs/Tabs/ModuleTabs";
 import WriteReviewButton from "../../components/base/writeReview/WriteReviewButton";
 import { useParams } from "react-router-dom";
+import ReviewsTab from "../../components/ModuleRatingTabs/ReviewsTab/ReviewsTab";
 const Module = () => {
   const [module, setModule]: any = useState({});
   const [reviews, setReviews]: any = useState([]);
@@ -69,6 +70,7 @@ const Module = () => {
         </div>
         <div className={styles.tabs}>
           <ModuleTabs reviews={reviews} />
+          {/* <ReviewsTab reviews={reviews} /> */}
         </div>
       </div>
       <Footer />

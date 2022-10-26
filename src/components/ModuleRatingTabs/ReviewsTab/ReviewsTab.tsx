@@ -6,7 +6,7 @@ export interface Ipros {
   reviews: any[];
 }
 const ReviewsTab = ({ reviews }: Ipros) => {
-  console.log("reviews", reviews);
+  console.log("+++++++", reviews);
   return (
     <div className={styles.reviewsTabMain}>
       <div className={styles.reviewsTabCont}>
@@ -20,7 +20,7 @@ const ReviewsTab = ({ reviews }: Ipros) => {
                 date={review.date.split("T")[0]}
               />
             </li>
-          )) || "Loading..."}
+          ))}
         </ul>
       </div>
     </div>

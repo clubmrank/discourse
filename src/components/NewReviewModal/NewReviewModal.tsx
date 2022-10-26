@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import styles from "./newreviewmodal.module.scss";
 import { Rate } from "antd";
 import { TagsModal } from "../TagsModal/TagsModal";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 export const NewReviewModal = () => {
   const [rating, setRating] = React.useState(1);
   const [review, setReview] = React.useState("");
@@ -11,7 +11,7 @@ export const NewReviewModal = () => {
   const [isAnonymous, setIsAnonymous] = React.useState(false);
   const [module, setModule]: any = useState({});
   const params: any = useParams();
-
+  const navigate = useNavigate();
   const close = (tags?: string[]) => {
     setIsTagsModalOpen(false);
     setTags(tags);
@@ -44,7 +44,9 @@ export const NewReviewModal = () => {
       requestOptions
     )
       .then((response) => response.json())
-      .then((data) => console.log(data))
+      .then((data) =>
+        navigate("/universities/${params.university}/${params.course}")
+      )
       .catch((err) => console.log(err));
   };
 
@@ -53,6 +55,7 @@ export const NewReviewModal = () => {
   };
   useEffect(() => {
     getModule(params.module);
+    console.log("params", params);
   });
   return (
     <div style={{ width: 400, borderRadius: "20px" }}>
