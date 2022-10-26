@@ -23,8 +23,6 @@ const Home = () => {
   const [modules, setModules] = useState([]);
   const [universities, setUniversities] = useState([]);
 
-  const getCourseByInsti = () => {};
-
   const getModules = async () => {
     await fetch(`https://discoursemrank.azurewebsites.net/get_all_modules`, {
       method: "GET",
