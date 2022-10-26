@@ -45,7 +45,9 @@ export const NewReviewModal = () => {
     )
       .then((response) => response.json())
       .then((data) =>
-        navigate(`/universities/${params.university}/${params.course}`)
+        navigate(
+          `/universities/${params.university}/${params.course}/${params.module}`
+        )
       )
       .catch((err) => console.log(err));
   };
