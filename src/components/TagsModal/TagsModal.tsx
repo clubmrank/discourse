@@ -12,7 +12,24 @@ export const TagsModal = ({ close }: IProps) => {
   const [review, setReview] = React.useState("");
   const [isTagsModalOpen, setIsTagsModalOpen] = React.useState(false);
   const [tags, setTags] = React.useState<string[]>([]);
-  const [loadTags, setLoadTags] = useState([]);
+  const loadTags = [
+    {
+      id: 1,
+      name: "Group Work",
+    },
+    {
+      id: 2,
+      name: "Gives Good Feedback",
+    },
+    {
+      id: 3,
+      name: "Get Ready To Read",
+    },
+    {
+      id: 4,
+      name: "Lecture Heavy",
+    },
+  ];
   const AddOrRemoveTag = (tag: string) => {
     let tagsCopy: string[] = [...tags];
 
@@ -30,18 +47,7 @@ export const TagsModal = ({ close }: IProps) => {
     console.log(tags);
     close(tags);
   };
-  const getTags = () => {
-    fetch(`https://discoursemrank.azurewebsites.net/get_all_tags`, {
-      method: "GET",
-    })
-      .then((res) => res.json())
-      .then((data) => setLoadTags(data))
-      .catch((err) => console.log(err));
-  };
 
-  useEffect(() => {
-    getTags();
-  });
   return (
     <div style={{ width: 600 }}>
       <div className={styles.modal}>
